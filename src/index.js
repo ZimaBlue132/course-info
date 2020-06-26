@@ -1,31 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Header = (props) => {
-  console.log(props)
-  return <h1>{props.course}</h1>
-}
-
-const Part = ({part, exercise}) =>
+const Part = ({part}) =>
 {
   return(
    <div>
      <p>
-       {part} {exercise}
+       {part.name} {part.exercises}
      </p>
    </div>
   )
 }
 
-const Content = ({part1, part2, part3, exercises1, exercises2, exercises3 }) => {
 
-  return (
-    <div>
-      <Part part={part1} exercise={exercises1}/>
-      <Part part={part2} exercise={exercises2}/>
-      <Part part={part3} exercise={exercises3}/>
-    </div>
-  )
+const Content = ({parts}) => {
+
+  return parts.map((p)=>{
+   return <Part key={p.name} part={p}/>
+  }) 
+  
 } 
 
 const App = () => {
@@ -47,11 +40,9 @@ const App = () => {
     <div>
       <h1>{course}</h1>   
         <Content
-        {...{part1: exercises}} 
-        {...{part2: exercises}} 
-        {...{part3: exercises}} 
+          parts={[part1, part2, part3]}
         />
-      <p>Number of exercises {exercises + exercises + exercises}</p>
+      <p>Number of exercises {part1.exercises + part2.exercises + part3.exercises}</p>
     </div>
   )
 }
