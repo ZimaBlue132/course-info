@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Part = ({parts}) =>
+const Part = ({part}) =>
 {
+  console.log(part)
   return(
    <div>
      <p>
-       {parts}
+       {part.name} {part.exercises}
      </p>
    </div>
   )
