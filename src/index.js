@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Part = ({part}) =>
+const Part = ({parts}) =>
 {
   return(
    <div>
      <p>
-       {part.name} {part.exercises}
+       {parts}
      </p>
    </div>
   )
@@ -42,11 +42,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>{course}</h1>   
+      <h1>{course.name}</h1>   
         <Content
-          parts={parts}
+          parts={course.parts}
         />
-      <p>Number of exercises {parts[0].exercises + parts[1].exercises + parts[2].exercises}</p>
+      <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}</p>
     </div>
   )
 }
