@@ -20,7 +20,15 @@ const Content = ({parts}) => {
   
 } 
 
+const Courses = ({courses}) => {
+  return courses.map((c)=>{
+   return <Course key={c.id} course={c}/>
+  }) 
+  
+}
+
 const Course = ({course}) => {
+  console.log(course)
     const total = course.parts.reduce((s, p) => {
     return s + p.exercises
   },0 )
@@ -79,10 +87,30 @@ const App = () => {
           id: 2
         }
       ]
+    },
+    {
+      name: 'test.js',
+      id: 3,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
+      ]
     }
   ]
-
-  return <Course course={course} />
+  return (
+    <Courses courses={courses}/>
+  )
+  
+  
+  
 }
 
 
