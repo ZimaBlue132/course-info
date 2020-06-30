@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 
 const Part = ({part}) =>
 {
-  console.log(part)
   return(
    <div>
      <p>
@@ -22,16 +21,20 @@ const Content = ({parts}) => {
 } 
 
 const Course = ({course}) => {
+    const total = course.parts.reduce((s, p) => {
+    return s + p.exercises
+  },0 )
   return (
     <div>
       <h1>{course.name}</h1>   
         <Content
           parts={course.parts}
         />
-      <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}</p>
+      <p>Number of exercises {total}</p> 
     </div>
   )
 }
+
 
 const App = () => {
   const course = {
@@ -58,16 +61,7 @@ const App = () => {
 
   return <Course course={course} />
 }
-/*
-  return (
-    <div>
-      <h1>{course.name}</h1>   
-        <Content
-          parts={course.parts}
-        />
-      <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}</p>
-    </div>
-  )
-*/
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'))
